@@ -60,6 +60,17 @@ public class ModulService {
         return transformEntity(modulEntity);
     }
 
+
+    public boolean deleteById(Long id) {
+        if(!modulRepository.existsById(id)) {
+            return false;
+        }
+        modulRepository.deleteById(id);
+        return true;
+    }
+
+
+
     private Modul transformEntity(ModulEntity modulEntity) {
         return new Modul(
                 modulEntity.getId(),

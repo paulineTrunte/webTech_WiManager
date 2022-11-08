@@ -46,4 +46,10 @@ public class ModulRestController {
         return modul != null? ResponseEntity.ok(modul) : ResponseEntity.notFound().build();
     }
 
+    @DeleteMapping(path= "/api/v1/modules/{id}")
+    public ResponseEntity<Void> deleteModule(@PathVariable Long id) {
+        boolean successful = modulService.deleteById(id);
+        return successful? ResponseEntity.ok().build() : ResponseEntity.notFound().build();
+    }
+
 }
