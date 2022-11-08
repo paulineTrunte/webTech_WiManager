@@ -1,6 +1,6 @@
 package de.htwberlin.webtech.wiManager.web.api;
 
-public class ModulCreateRequest {
+public class ModulCreateOrUpdateRequest {
 
     private String modulName;
     private int semester;
@@ -9,7 +9,7 @@ public class ModulCreateRequest {
     private String sws;
     private int lp;
 
-    public ModulCreateRequest(String modulName, int semester, String art, String form, String sws, int lp) {
+    public ModulCreateOrUpdateRequest(String modulName, int semester, String art, String form, String sws, int lp) {
         this.modulName = modulName;
         this.semester = semester;
         this.art = art;

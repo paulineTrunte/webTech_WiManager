@@ -2,7 +2,7 @@ package de.htwberlin.webtech.wiManager.web;
 
 import de.htwberlin.webtech.wiManager.service.ModulService;
 import de.htwberlin.webtech.wiManager.web.api.Modul;
-import de.htwberlin.webtech.wiManager.web.api.ModulCreateRequest;
+import de.htwberlin.webtech.wiManager.web.api.ModulCreateOrUpdateRequest;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -34,10 +34,16 @@ public class ModulRestController {
     }
 
     @PostMapping(path="/api/v1/modules")
-    public ResponseEntity<Void> createModule(@RequestBody ModulCreateRequest request) throws URISyntaxException {
+    public ResponseEntity<Void> createModule(@RequestBody ModulCreateOrUpdateRequest request) throws URISyntaxException {
         var module = modulService.create(request);
         URI uri = new URI("/api/v1/modules/" + module.getId());
         return ResponseEntity.created(uri).build();
+    }
+
+    @PutMapping(path= "/api/v1/modules/{id}")
+    public ResponseEntity<Modul> updateModule(@PathVariable Long id, @RequestBody ModulCreateOrUpdateRequest request){
+        var modul = modulService.update(id, request);
+        return modul != null? ResponseEntity.ok(modul) : ResponseEntity.notFound().build();
     }
 
 }

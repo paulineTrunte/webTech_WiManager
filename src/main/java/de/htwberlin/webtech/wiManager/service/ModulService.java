@@ -3,7 +3,7 @@ package de.htwberlin.webtech.wiManager.service;
 import de.htwberlin.webtech.wiManager.persistance.ModulEntity;
 import de.htwberlin.webtech.wiManager.persistance.ModulRepository;
 import de.htwberlin.webtech.wiManager.web.api.Modul;
-import de.htwberlin.webtech.wiManager.web.api.ModulCreateRequest;
+import de.htwberlin.webtech.wiManager.web.api.ModulCreateOrUpdateRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -25,7 +25,7 @@ public class ModulService {
                 .collect(Collectors.toList());
     }
 
-    public Modul create(ModulCreateRequest request) {
+    public Modul create(ModulCreateOrUpdateRequest request) {
         var modulEntity = new ModulEntity(
                 request.getModulName(),
                 request.getSemester(),
@@ -40,6 +40,24 @@ public class ModulService {
     public Modul findById(Long id) {
         var modulEntity = modulRepository.findById(id);
         return modulEntity.map(this::transformEntity).orElse(null);
+    }
+
+    public Modul update(Long id, ModulCreateOrUpdateRequest request) {
+        var modulEntityOptional = modulRepository.findById(id);
+        if(modulEntityOptional.isEmpty()) {
+            return null;
+        }
+
+        var modulEntity = modulEntityOptional.get();
+        modulEntity.setModulName(request.getModulName());
+        modulEntity.setSemester(request.getSemester());
+        modulEntity.setArt(request.getArt());
+        modulEntity.setForm(request.getForm());
+        modulEntity.setSws(request.getSws());
+        modulEntity.setLp(request.getLp());
+        modulEntity = modulRepository.save(modulEntity);
+
+        return transformEntity(modulEntity);
     }
 
     private Modul transformEntity(ModulEntity modulEntity) {
