@@ -1,19 +1,35 @@
-package de.htwberlin.webtech.wiManager.web.api;
+package de.htwberlin.webtech.wiManager.persistance;
 
+import javax.persistence.*;
 
+@Entity(name = "modules")
+public class ModulEntity {
 
-public class Modul {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //Wert wir immer um 1 nach oben gezählt
+    @Column(name = "id", nullable = false, unique = true)
     private long id;
+
+    @Column(name= "modul name", nullable = false)
     private String modulName;
+
+    @Column(name= "semester", nullable = true)
     private int semester;
+
+    @Column(name="art", nullable = false)
     private String art;
+
+    @Column(name="form", nullable = true)
     private String form;
+
+    @Column(name="sws", nullable = false)
     private String sws;
+
+    @Column(name="lp", nullable = false)
     private int lp;
 
 
-    public Modul(long id, String modulName, int semester, String art, String form, String sws, int lp) {
+    public ModulEntity(long id, String modulName, int semester, String art, String form, String sws, int lp) {
         this.id = id;
         this.modulName = modulName;
         this.semester = semester;
@@ -23,17 +39,12 @@ public class Modul {
         this.lp = lp;
     }
 
-    public Modul() {
-
+    protected ModulEntity() {
     }
 
 
     public long getId() {
         return id;
-    }
-
-    public void setId(long id) {
-        this.id = id;
     }
 
     public String getModulName() {
