@@ -22,7 +22,7 @@ public class ModulEntity {
     @Column(name="form", nullable = true)
     private String form;
 
-    @Column(name="sws", nullable = false)
+    @Column(name="sws", nullable = true)
     private String sws;
 
     @Column(name="lp", nullable = false)
