@@ -37,6 +37,11 @@ public class ModulService {
         return transformEntity(modulEntity);
     }
 
+    public Modul findById(Long id) {
+        var modulEntity = modulRepository.findById(id);
+        return modulEntity.map(this::transformEntity).orElse(null);
+    }
+
     private Modul transformEntity(ModulEntity modulEntity) {
         return new Modul(
                 modulEntity.getId(),
