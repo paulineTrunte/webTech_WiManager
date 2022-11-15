@@ -8,7 +8,7 @@ public class ModulEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Wert wir immer um 1 nach oben gezählt
     @Column(name = "id", nullable = false, unique = true)
-    private long id;
+    private Long id;
 
     @Column(name= "modul name", nullable = false)
     private String modulName;
@@ -29,6 +29,7 @@ public class ModulEntity {
     private int lp;
 
 
+
     public ModulEntity(String modulName, int semester, String art, String form, String sws, int lp) {
         this.modulName = modulName;
         this.semester = semester;
@@ -42,7 +43,7 @@ public class ModulEntity {
     }
 
 
-    public long getId() {
+    public Long getId() {
         return id;
     }
 
