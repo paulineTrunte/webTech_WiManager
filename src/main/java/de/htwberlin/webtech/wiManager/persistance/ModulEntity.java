@@ -1,5 +1,4 @@
 package de.htwberlin.webtech.wiManager.persistance;
-
 import javax.persistence.*;
 
 @Entity(name = "modules")
