@@ -4,6 +4,7 @@ import javax.persistence.*;
 @Entity(name = "modules")
 public class ModulEntity {
 
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //Wert wir immer um 1 nach oben gezählt
     @Column(name = "id", nullable = false, unique = true)
