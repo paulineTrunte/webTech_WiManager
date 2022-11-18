@@ -31,7 +31,7 @@ public class StudentService {
     }
 
     public Student create(StudentCreateOrUpdateRequest request){
-        var studentEntity = new StudentEntity(request.getVorname(), request.getName());
+        var studentEntity = new StudentEntity(request.getVorname(), request.getName(), request.getEmail(), request.getMatrikelNr());
         studentEntity = studentRepository.save(studentEntity);
         return transformEntity(studentEntity);
 
@@ -46,6 +46,8 @@ public class StudentService {
         var studentEntity = studentEntityOptional.get();
         studentEntity.setVorname(request.getVorname());
         studentEntity.setName(request.getName());
+        studentEntity.setEmail(request.getEmail());
+        studentEntity.setMatrikelNr(request.getMatrikelNr());
         studentEntity = studentRepository.save(studentEntity);
 
         return transformEntity(studentEntity);
@@ -64,7 +66,9 @@ public class StudentService {
         return new Student(
                 studentEntity.getId(),
                 studentEntity.getVorname(),
-                studentEntity.getName()
+                studentEntity.getName(),
+                studentEntity.getEmail(),
+                studentEntity.getMatrikelNr()
         );
     }
 }

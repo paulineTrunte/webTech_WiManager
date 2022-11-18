@@ -5,9 +5,15 @@ public class StudentCreateOrUpdateRequest {
     private String vorname;
     private String name;
 
-    public StudentCreateOrUpdateRequest(String vorname, String name) {
+    private String email;
+
+    private int matrikelNr;
+
+    public StudentCreateOrUpdateRequest(String vorname, String name, int matrikelNr, String email) {
         this.vorname = vorname;
         this.name = name;
+        this.matrikelNr = matrikelNr;
+        this.email = email;
     }
 
     public String getVorname() {
@@ -24,5 +30,21 @@ public class StudentCreateOrUpdateRequest {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public int getMatrikelNr() {
+        return matrikelNr;
+    }
+
+    public void setMatrikelNr(int matrikelNr) {
+        this.matrikelNr = matrikelNr;
     }
 }
