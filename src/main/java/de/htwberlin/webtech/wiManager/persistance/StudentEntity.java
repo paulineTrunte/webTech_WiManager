@@ -25,8 +25,8 @@ public class StudentEntity {
     public StudentEntity(String vorname, String name, String email, int matrikelNr) {
         this.vorname = vorname;
         this.name = name;
-        this.matrikelNr = matrikelNr;
         this.email = email;
+        this.matrikelNr = matrikelNr;
     }
 
     protected StudentEntity(){}
