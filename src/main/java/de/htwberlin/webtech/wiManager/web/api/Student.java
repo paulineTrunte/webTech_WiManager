@@ -5,9 +5,7 @@ public class Student {
     private long id;
     private String vorname;
     private String name;
-
     private String email;
-
     private int matrikelNr;
 
     public Student(long id, String vorname, String name, String email, int matrikelNr) {

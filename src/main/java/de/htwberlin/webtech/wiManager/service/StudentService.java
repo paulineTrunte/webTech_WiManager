@@ -31,7 +31,8 @@ public class StudentService {
     }
 
     public Student create(StudentCreateOrUpdateRequest request){
-        var studentEntity = new StudentEntity(request.getVorname(), request.getName(), request.getEmail(), request.getMatrikelNr());
+        var studentEntity = new StudentEntity(
+                request.getVorname(), request.getName(), request.getEmail(), request.getMatrikelNr());
         studentEntity = studentRepository.save(studentEntity);
         return transformEntity(studentEntity);
 

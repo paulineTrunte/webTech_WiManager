@@ -7,7 +7,7 @@ public class StudentEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name= "id")
+    @Column(name= "id", nullable = false, unique = true)
     private Long id;
 
     @Column(name= "vorname", nullable = false)
@@ -25,8 +25,8 @@ public class StudentEntity {
     public StudentEntity(String vorname, String name, String email, int matrikelNr) {
         this.vorname = vorname;
         this.name = name;
-        this.matrikelNr = this.matrikelNr;
-        this.email = this.email;
+        this.matrikelNr = matrikelNr;
+        this.email = email;
     }
 
     protected StudentEntity(){}
