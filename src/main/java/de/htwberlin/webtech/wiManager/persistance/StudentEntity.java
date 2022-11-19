@@ -16,7 +16,7 @@ public class StudentEntity {
     @Column(name= "name", nullable = false)
     private String name;
 
-    @Column(name= "matrikel_Nr", nullable = false)
+    @Column(name= "matrikelNr", nullable = false)
     private int matrikelNr;
 
     @Column(name= "email", nullable = false)
