@@ -9,11 +9,11 @@ public class StudentCreateOrUpdateRequest {
 
     private int matrikelNr;
 
-    public StudentCreateOrUpdateRequest(String vorname, String name, int matrikelNr, String email) {
+    public StudentCreateOrUpdateRequest(String vorname, String name, String email, int matrikelNr) {
         this.vorname = vorname;
         this.name = name;
-        this.matrikelNr = matrikelNr;
         this.email = email;
+        this.matrikelNr = matrikelNr;
     }
 
     public String getVorname() {
