@@ -12,8 +12,14 @@ public class Modul {
     private String sws;
     private int lp;
 
+    private boolean belegt;
 
-    public Modul(long id, String modulName, int semester, String art, String form, String sws, int lp) {
+    private boolean bestanden;
+
+    private double note;
+
+
+    public Modul(long id, String modulName, int semester, String art, String form, String sws, int lp, boolean belegt, boolean bestanden, double note) {
         this.id = id;
         this.modulName = modulName;
         this.semester = semester;
@@ -21,6 +27,9 @@ public class Modul {
         this.form = form;
         this.sws = sws;
         this.lp = lp;
+        this.belegt = belegt;
+        this.bestanden = bestanden;
+        this.note = note;
     }
 
     public Modul() {
@@ -83,4 +92,16 @@ public class Modul {
     public void setLp(int lp) {
         this.lp = lp;
     }
+
+    public boolean isBelegt() { return belegt; }
+
+    public void setBelegt(boolean belegt) { this.belegt = belegt; }
+
+    public boolean isBestanden() { return bestanden; }
+
+    public void setBestanden(boolean bestanden) { this.bestanden = bestanden; }
+
+    public double getNote() { return note; }
+
+    public void setNote(double note) { this.note = note; }
 }

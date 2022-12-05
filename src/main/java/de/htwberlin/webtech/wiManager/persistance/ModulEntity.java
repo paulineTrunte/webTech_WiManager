@@ -28,15 +28,27 @@ public class ModulEntity {
     @Column(name="lp", nullable = false)
     private int lp;
 
+    @Column(name="belegt", nullable = true)
+    private boolean belegt;
+
+    @Column(name="bestanden", nullable = true)
+    private boolean bestanden;
+
+    @Column(name="note", nullable = true)
+    private double note;
 
 
-    public ModulEntity(String modulName, int semester, String art, String form, String sws, int lp) {
+
+    public ModulEntity(String modulName, int semester, String art, String form, String sws, int lp, boolean belegt, boolean bestanden, double note) {
         this.modulName = modulName;
         this.semester = semester;
         this.art = art;
         this.form = form;
         this.sws = sws;
         this.lp = lp;
+        this.belegt = belegt;
+        this.bestanden = bestanden;
+        this.note = note;
     }
 
     protected ModulEntity() {
@@ -94,4 +106,16 @@ public class ModulEntity {
     public void setLp(int lp) {
         this.lp = lp;
     }
+
+    public boolean isBelegt() { return belegt; }
+
+    public void setBelegt(boolean belegt) { this.belegt = belegt; }
+
+    public boolean isBestanden() { return bestanden; }
+
+    public void setBestanden(boolean bestanden) { this.bestanden = bestanden; }
+
+    public double getNote() { return note; }
+
+    public void setNote(double note) { this.note = note; }
 }

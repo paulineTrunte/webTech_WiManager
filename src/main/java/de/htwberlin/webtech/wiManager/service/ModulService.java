@@ -32,7 +32,10 @@ public class ModulService {
                 request.getArt(),
                 request.getForm(),
                 request.getSws(),
-                request.getLp());
+                request.getLp(),
+                request.isBestanden(),
+                request.isBelegt(),
+                request.getNote());
         modulEntity =modulRepository.save(modulEntity);
         return transformEntity(modulEntity);
     }
@@ -55,6 +58,9 @@ public class ModulService {
         modulEntity.setForm(request.getForm());
         modulEntity.setSws(request.getSws());
         modulEntity.setLp(request.getLp());
+        modulEntity.setBelegt(request.isBelegt());
+        modulEntity.setBestanden(request.isBestanden());
+        modulEntity.setNote(request.getNote());
         modulEntity = modulRepository.save(modulEntity);
 
         return transformEntity(modulEntity);
@@ -79,7 +85,10 @@ public class ModulService {
                 modulEntity.getArt(),
                 modulEntity.getForm(),
                 modulEntity.getSws(),
-                modulEntity.getLp()
+                modulEntity.getLp(),
+                modulEntity.isBelegt(),
+                modulEntity.isBestanden(),
+                modulEntity.getNote()
         );
     }
 }
