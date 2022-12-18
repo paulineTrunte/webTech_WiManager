@@ -1,6 +1,8 @@
 package de.htwberlin.webtech.wiManager.persistance;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "students")
 public class StudentEntity {
@@ -22,11 +24,27 @@ public class StudentEntity {
     @Column(name= "email", nullable = false)
     private String email;
 
-    public StudentEntity(String vorname, String name, String email, int matrikelNr) {
+    @Column(name= "password", nullable = false)
+    private String password;
+
+    @Column(name= "notenDurchschnitt")
+    private double notenDurchschnitt;
+
+    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
+    private List<ModulEntity> modulesBelegt = new ArrayList<>();
+
+    @OneToMany(mappedBy = "owner", fetch =FetchType.EAGER)
+    private List<ModulEntity> modulesBestanden = new ArrayList<>();
+
+
+
+    public StudentEntity(String vorname, String name, String email, String password, int matrikelNr, double notenDurchschnitt) {
         this.vorname = vorname;
         this.name = name;
         this.email = email;
+        this.password = password;
         this.matrikelNr = matrikelNr;
+        this.notenDurchschnitt = notenDurchschnitt;
     }
 
     protected StudentEntity(){}
@@ -66,4 +84,20 @@ public class StudentEntity {
     public void setEmail(String email) {
         this.email = email;
     }
+
+    public String getPassword() { return password; }
+
+    public void setPassword(String password) { this.password = password; }
+
+    public double getNotenDurchschnitt() { return notenDurchschnitt;}
+
+    public void setNotenDurchschnitt(double notenDurchschnitt){ this.notenDurchschnitt = notenDurchschnitt;}
+
+    public List<ModulEntity> getModulesBelegt() { return modulesBelegt;}
+
+    public void setModulesBelegt(List<ModulEntity> modulesBelegt) { this.modulesBelegt = modulesBelegt;}
+
+    public List<ModulEntity> getModulesBestanden() { return modulesBestanden; }
+
+    public void setModulesBestanden(List<ModulEntity> modulesBestanden) { this.modulesBestanden = modulesBestanden;}
 }

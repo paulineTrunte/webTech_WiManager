@@ -9,12 +9,20 @@ public class StudentCreateOrUpdateRequest {
 
     private int matrikelNr;
 
-    public StudentCreateOrUpdateRequest(String vorname, String name, String email, int matrikelNr) {
+    private String password;
+
+    private double notenDurchschnitt;
+
+    public StudentCreateOrUpdateRequest(String vorname, String name, String email, String password, int matrikelNr, double notenDurchschnitt) {
         this.vorname = vorname;
         this.name = name;
         this.email = email;
+        this.password = password;
         this.matrikelNr = matrikelNr;
+        this.notenDurchschnitt = notenDurchschnitt;
     }
+
+    public StudentCreateOrUpdateRequest(){}
 
     public String getVorname() {
         return vorname;
@@ -40,6 +48,10 @@ public class StudentCreateOrUpdateRequest {
         this.email = email;
     }
 
+    public String getPassword() {return password;}
+
+    public void setPassword(String password) {this.password = password;}
+
     public int getMatrikelNr() {
         return matrikelNr;
     }
@@ -47,4 +59,8 @@ public class StudentCreateOrUpdateRequest {
     public void setMatrikelNr(int matrikelNr) {
         this.matrikelNr = matrikelNr;
     }
+
+    public double getNotenDurchschnitt(){ return notenDurchschnitt;}
+
+    public void setNotenDurchschnitt(double notenDurchschnitt){ this.notenDurchschnitt = notenDurchschnitt;}
 }

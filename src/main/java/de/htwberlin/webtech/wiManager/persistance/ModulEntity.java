@@ -1,5 +1,12 @@
 package de.htwberlin.webtech.wiManager.persistance;
-import javax.persistence.*;
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 
 @Entity(name = "modules")
 public class ModulEntity {
@@ -10,36 +17,40 @@ public class ModulEntity {
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
-    @Column(name= "modul name", nullable = false)
+    @Column(name = "modul name", nullable = false)
     private String modulName;
 
-    @Column(name= "semester", nullable = true)
+    @Column(name = "semester", nullable = true)
     private int semester;
 
-    @Column(name="art", nullable = false)
+    @Column(name = "art", nullable = false)
     private String art;
 
-    @Column(name="form", nullable = true)
+    @Column(name = "form", nullable = true)
     private String form;
 
-    @Column(name="sws", nullable = true)
+    @Column(name = "sws", nullable = true)
     private String sws;
 
-    @Column(name="lp", nullable = false)
+    @Column(name = "lp", nullable = false)
     private int lp;
 
-    @Column(name="belegt", nullable = true)
+    @Column(name = "belegt", nullable = true)
     private boolean belegt;
 
-    @Column(name="bestanden", nullable = true)
+    @Column(name = "bestanden", nullable = true)
     private boolean bestanden;
 
-    @Column(name="note", nullable = true)
+    @Column(name = "note", nullable = true)
     private double note;
 
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "owner_id", referencedColumnName = "id")
+    private StudentEntity owner;
 
 
-    public ModulEntity(String modulName, int semester, String art, String form, String sws, int lp, boolean belegt, boolean bestanden, double note) {
+    public ModulEntity(String modulName, int semester, String art, String form, String sws, int lp,
+                       boolean belegt, boolean bestanden, double note, StudentEntity owner) {
         this.modulName = modulName;
         this.semester = semester;
         this.art = art;
@@ -49,6 +60,7 @@ public class ModulEntity {
         this.belegt = belegt;
         this.bestanden = bestanden;
         this.note = note;
+        this.owner = owner;
     }
 
     protected ModulEntity() {
@@ -107,15 +119,19 @@ public class ModulEntity {
         this.lp = lp;
     }
 
-    public boolean isBelegt() { return belegt; }
+    public boolean isBelegt() {return belegt;}
 
-    public void setBelegt(boolean belegt) { this.belegt = belegt; }
+    public void setBelegt(boolean belegt) {this.belegt = belegt;}
 
-    public boolean isBestanden() { return bestanden; }
+    public boolean isBestanden() {return bestanden;}
 
-    public void setBestanden(boolean bestanden) { this.bestanden = bestanden; }
+    public void setBestanden(boolean bestanden) {this.bestanden = bestanden;}
 
-    public double getNote() { return note; }
+    public double getNote() {return note;}
 
-    public void setNote(double note) { this.note = note; }
+    public void setNote(double note) {this.note = note;}
+
+    public StudentEntity getOwner() {return owner;}
+
+    public void setOwner(StudentEntity owner) {this.owner = owner;}
 }

@@ -2,6 +2,7 @@ package de.htwberlin.webtech.wiManager.service;
 
 import de.htwberlin.webtech.wiManager.persistance.ModulEntity;
 import de.htwberlin.webtech.wiManager.persistance.ModulRepository;
+import de.htwberlin.webtech.wiManager.persistance.StudentRepository;
 import de.htwberlin.webtech.wiManager.web.api.Modul;
 import de.htwberlin.webtech.wiManager.web.api.ModulCreateOrUpdateRequest;
 import org.springframework.stereotype.Service;
@@ -13,9 +14,14 @@ import java.util.stream.Collectors;
 public class ModulService {
 
     private final ModulRepository modulRepository;
+    private final StudentRepository studentRepository;
+    private final StudentTransformer studentTransformer;
 
-    public ModulService(ModulRepository modulRepository) {
+    public ModulService(ModulRepository modulRepository, StudentRepository studentRepository, StudentTransformer studentTransformer)
+    {
         this.modulRepository = modulRepository;
+        this.studentRepository = studentRepository;
+        this.studentTransformer = studentTransformer;
     }
 
     public List<Modul> findAll(){
@@ -26,6 +32,7 @@ public class ModulService {
     }
 
     public Modul create(ModulCreateOrUpdateRequest request) {
+        var owner = studentRepository.findById(request.getOwnerId()).orElseThrow();
         var modulEntity = new ModulEntity(
                 request.getModulName(),
                 request.getSemester(),
@@ -35,7 +42,8 @@ public class ModulService {
                 request.getLp(),
                 request.isBestanden(),
                 request.isBelegt(),
-                request.getNote());
+                request.getNote(),
+                owner);
         modulEntity =modulRepository.save(modulEntity);
         return transformEntity(modulEntity);
     }
@@ -88,7 +96,8 @@ public class ModulService {
                 modulEntity.getLp(),
                 modulEntity.isBelegt(),
                 modulEntity.isBestanden(),
-                modulEntity.getNote()
+                modulEntity.getNote(),
+                studentTransformer.transformEntity(modulEntity.getOwner())
         );
     }
 }
