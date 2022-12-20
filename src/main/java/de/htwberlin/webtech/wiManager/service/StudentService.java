@@ -39,7 +39,8 @@ public class StudentService {
                 request.getEmail(),
                 request.getPassword(),
                 request.getMatrikelNr(),
-                request.getNotenDurchschnitt());
+                request.getNotenDurchschnitt(),
+                request.getLpGesamt());
         studentEntity = studentRepository.save(studentEntity);
         return transformEntity(studentEntity);
 
@@ -58,6 +59,7 @@ public class StudentService {
         studentEntity.setPassword(request.getPassword());
         studentEntity.setMatrikelNr(request.getMatrikelNr());
         studentEntity.setNotenDurchschnitt(request.getNotenDurchschnitt());
+        studentEntity.setLpGesamt(request.getLpGesamt());
         studentEntity = studentRepository.save(studentEntity);
 
         return transformEntity(studentEntity);
@@ -80,7 +82,8 @@ public class StudentService {
                 studentEntity.getEmail(),
                 studentEntity.getPassword(),
                 studentEntity.getMatrikelNr(),
-                studentEntity.getNotenDurchschnitt()
+                studentEntity.getNotenDurchschnitt(),
+                studentEntity.getLpGesamt()
         );
     }
 }

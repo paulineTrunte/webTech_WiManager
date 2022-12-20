@@ -30,6 +30,9 @@ public class StudentEntity {
     @Column(name= "notenDurchschnitt")
     private double notenDurchschnitt;
 
+    @Column(name= "lpGesamt")
+    private int lpGesamt;
+
     @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
     private List<ModulEntity> modulesBelegt = new ArrayList<>();
 
@@ -38,13 +41,15 @@ public class StudentEntity {
 
 
 
-    public StudentEntity(String vorname, String name, String email, String password, int matrikelNr, double notenDurchschnitt) {
+    public StudentEntity(String vorname, String name, String email, String password, int matrikelNr,
+                         double notenDurchschnitt, int lpGesamt) {
         this.vorname = vorname;
         this.name = name;
         this.email = email;
         this.password = password;
         this.matrikelNr = matrikelNr;
         this.notenDurchschnitt = notenDurchschnitt;
+        this.lpGesamt = lpGesamt;
     }
 
     protected StudentEntity(){}
@@ -92,6 +97,10 @@ public class StudentEntity {
     public double getNotenDurchschnitt() { return notenDurchschnitt;}
 
     public void setNotenDurchschnitt(double notenDurchschnitt){ this.notenDurchschnitt = notenDurchschnitt;}
+
+    public int getLpGesamt() {return lpGesamt;}
+
+    public void setLpGesamt(int lpGesamt){ this.lpGesamt = lpGesamt;}
 
     public List<ModulEntity> getModulesBelegt() { return modulesBelegt;}
 

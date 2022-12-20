@@ -32,7 +32,7 @@ public class Student {
         this.modulesBestanden = moduleIdsBestanden;
     }
 
-    public Student(long id, String vorname, String name, String email, String password, int matrikelNr, double notenDurchschnitt) {
+    public Student(long id, String vorname, String name, String email, String password, int matrikelNr, double notenDurchschnitt, int lpGesamt) {
     }
 
 
