@@ -8,18 +8,13 @@ public class ModulCreateOrUpdateRequest {
     private String form;
     private String sws;
     private int lp;
-
     private boolean belegt;
-
     private boolean bestanden;
 
-    private double note;
-
-    private Long ownerId;
 
 
     public ModulCreateOrUpdateRequest(String modulName, int semester, String art, String form, String sws, int lp,
-                                      boolean belegt, boolean bestanden, double note, Long ownerId) {
+                                      boolean belegt, boolean bestanden) {
         this.modulName = modulName;
         this.semester = semester;
         this.art = art;
@@ -28,8 +23,6 @@ public class ModulCreateOrUpdateRequest {
         this.lp = lp;
         this.belegt = belegt;
         this.bestanden = bestanden;
-        this.note = note;
-        this.ownerId = ownerId;
     }
 
     public ModulCreateOrUpdateRequest() {}
@@ -89,12 +82,4 @@ public class ModulCreateOrUpdateRequest {
     public boolean isBestanden() { return bestanden; }
 
     public void setBestanden(boolean bestanden) { this.bestanden = bestanden; }
-
-    public double getNote() { return note; }
-
-    public void setNote(double note) { this.note = note; }
-
-    public Long getOwnerId() { return ownerId;}
-
-    public void setOwnerId(Long ownerId) {this.ownerId = ownerId;}
 }

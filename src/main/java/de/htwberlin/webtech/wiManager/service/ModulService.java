@@ -15,13 +15,11 @@ public class ModulService {
 
     private final ModulRepository modulRepository;
     private final StudentRepository studentRepository;
-    private final StudentTransformer studentTransformer;
 
-    public ModulService(ModulRepository modulRepository, StudentRepository studentRepository, StudentTransformer studentTransformer)
+    public ModulService(ModulRepository modulRepository, StudentRepository studentRepository)
     {
         this.modulRepository = modulRepository;
         this.studentRepository = studentRepository;
-        this.studentTransformer = studentTransformer;
     }
 
     public List<Modul> findAll(){
@@ -32,7 +30,6 @@ public class ModulService {
     }
 
     public Modul create(ModulCreateOrUpdateRequest request) {
-        var owner = studentRepository.findById(request.getOwnerId()).orElseThrow();
         var modulEntity = new ModulEntity(
                 request.getModulName(),
                 request.getSemester(),
@@ -41,9 +38,7 @@ public class ModulService {
                 request.getSws(),
                 request.getLp(),
                 request.isBestanden(),
-                request.isBelegt(),
-                request.getNote(),
-                owner);
+                request.isBelegt());
         modulEntity =modulRepository.save(modulEntity);
         return transformEntity(modulEntity);
     }
@@ -68,7 +63,6 @@ public class ModulService {
         modulEntity.setLp(request.getLp());
         modulEntity.setBelegt(request.isBelegt());
         modulEntity.setBestanden(request.isBestanden());
-        modulEntity.setNote(request.getNote());
         modulEntity = modulRepository.save(modulEntity);
 
         return transformEntity(modulEntity);
@@ -95,9 +89,7 @@ public class ModulService {
                 modulEntity.getSws(),
                 modulEntity.getLp(),
                 modulEntity.isBelegt(),
-                modulEntity.isBestanden(),
-                modulEntity.getNote(),
-                studentTransformer.transformEntity(modulEntity.getOwner())
+                modulEntity.isBestanden()
         );
     }
 }

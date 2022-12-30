@@ -13,11 +13,9 @@ import java.util.stream.Collectors;
 public class StudentService {
 
     private final StudentRepository studentRepository;
-    private final StudentTransformer studentTransformer;
 
-    public StudentService(StudentRepository studentRepository, StudentTransformer studentTransformer) {
+    public StudentService(StudentRepository studentRepository) {
         this.studentRepository = studentRepository;
-        this.studentTransformer = studentTransformer;
     }
 
     public List<Student> findAll(){
@@ -38,9 +36,7 @@ public class StudentService {
                 request.getName(),
                 request.getEmail(),
                 request.getPassword(),
-                request.getMatrikelNr(),
-                request.getNotenDurchschnitt(),
-                request.getLpGesamt());
+                request.getMatrikelNr());
         studentEntity = studentRepository.save(studentEntity);
         return transformEntity(studentEntity);
 
@@ -58,8 +54,6 @@ public class StudentService {
         studentEntity.setEmail(request.getEmail());
         studentEntity.setPassword(request.getPassword());
         studentEntity.setMatrikelNr(request.getMatrikelNr());
-        studentEntity.setNotenDurchschnitt(request.getNotenDurchschnitt());
-        studentEntity.setLpGesamt(request.getLpGesamt());
         studentEntity = studentRepository.save(studentEntity);
 
         return transformEntity(studentEntity);
@@ -81,9 +75,7 @@ public class StudentService {
                 studentEntity.getName(),
                 studentEntity.getEmail(),
                 studentEntity.getPassword(),
-                studentEntity.getMatrikelNr(),
-                studentEntity.getNotenDurchschnitt(),
-                studentEntity.getLpGesamt()
+                studentEntity.getMatrikelNr()
         );
     }
 }

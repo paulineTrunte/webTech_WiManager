@@ -41,16 +41,10 @@ public class ModulEntity {
     @Column(name = "bestanden", nullable = true)
     private boolean bestanden;
 
-    @Column(name = "note", nullable = true)
-    private double note;
-
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "owner_id", referencedColumnName = "id")
-    private StudentEntity owner;
 
 
     public ModulEntity(String modulName, int semester, String art, String form, String sws, int lp,
-                       boolean belegt, boolean bestanden, double note, StudentEntity owner) {
+                       boolean belegt, boolean bestanden) {
         this.modulName = modulName;
         this.semester = semester;
         this.art = art;
@@ -59,8 +53,6 @@ public class ModulEntity {
         this.lp = lp;
         this.belegt = belegt;
         this.bestanden = bestanden;
-        this.note = note;
-        this.owner = owner;
     }
 
     protected ModulEntity() {
@@ -126,12 +118,4 @@ public class ModulEntity {
     public boolean isBestanden() {return bestanden;}
 
     public void setBestanden(boolean bestanden) {this.bestanden = bestanden;}
-
-    public double getNote() {return note;}
-
-    public void setNote(double note) {this.note = note;}
-
-    public StudentEntity getOwner() {return owner;}
-
-    public void setOwner(StudentEntity owner) {this.owner = owner;}
 }

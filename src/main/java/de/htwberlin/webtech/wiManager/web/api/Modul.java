@@ -1,8 +1,6 @@
 package de.htwberlin.webtech.wiManager.web.api;
 
 
-import java.util.List;
-
 public class Modul {
 
     private long id;
@@ -12,20 +10,15 @@ public class Modul {
     private String form;
     private String sws;
     private int lp;
-
     private boolean belegt;
-
     private boolean bestanden;
 
-    private double note;
-
-    private Student student;
 
 
 
 
     public Modul(long id, String modulName, int semester, String art, String form, String sws, int lp,
-                 boolean belegt, boolean bestanden, double note, Student student) {
+                 boolean belegt, boolean bestanden) {
         this.id = id;
         this.modulName = modulName;
         this.semester = semester;
@@ -35,8 +28,6 @@ public class Modul {
         this.lp = lp;
         this.belegt = belegt;
         this.bestanden = bestanden;
-        this.note = note;
-        this.student = student;
     }
 
     public Modul() {
@@ -108,11 +99,4 @@ public class Modul {
 
     public void setBestanden(boolean bestanden) { this.bestanden = bestanden; }
 
-    public double getNote() { return note; }
-
-    public void setNote(double note) { this.note = note; }
-
-    public Student getStudent() { return student;}
-
-    public void setStudent(Student student) {this.student = student;}
 }

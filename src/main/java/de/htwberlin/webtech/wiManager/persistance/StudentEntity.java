@@ -27,29 +27,14 @@ public class StudentEntity {
     @Column(name= "password", nullable = false)
     private String password;
 
-    @Column(name= "notenDurchschnitt")
-    private double notenDurchschnitt;
-
-    @Column(name= "lpGesamt")
-    private int lpGesamt;
-
-    @OneToMany(mappedBy = "owner", fetch = FetchType.EAGER)
-    private List<ModulEntity> modulesBelegt = new ArrayList<>();
-
-    @OneToMany(mappedBy = "owner", fetch =FetchType.EAGER)
-    private List<ModulEntity> modulesBestanden = new ArrayList<>();
 
 
-
-    public StudentEntity(String vorname, String name, String email, String password, int matrikelNr,
-                         double notenDurchschnitt, int lpGesamt) {
+    public StudentEntity(String vorname, String name, String email, String password, int matrikelNr) {
         this.vorname = vorname;
         this.name = name;
         this.email = email;
         this.password = password;
-        this.matrikelNr = matrikelNr;
-        this.notenDurchschnitt = notenDurchschnitt;
-        this.lpGesamt = lpGesamt;
+        this.matrikelNr = matrikelNr;;
     }
 
     protected StudentEntity(){}
@@ -93,20 +78,4 @@ public class StudentEntity {
     public String getPassword() { return password; }
 
     public void setPassword(String password) { this.password = password; }
-
-    public double getNotenDurchschnitt() { return notenDurchschnitt;}
-
-    public void setNotenDurchschnitt(double notenDurchschnitt){ this.notenDurchschnitt = notenDurchschnitt;}
-
-    public int getLpGesamt() {return lpGesamt;}
-
-    public void setLpGesamt(int lpGesamt){ this.lpGesamt = lpGesamt;}
-
-    public List<ModulEntity> getModulesBelegt() { return modulesBelegt;}
-
-    public void setModulesBelegt(List<ModulEntity> modulesBelegt) { this.modulesBelegt = modulesBelegt;}
-
-    public List<ModulEntity> getModulesBestanden() { return modulesBestanden; }
-
-    public void setModulesBestanden(List<ModulEntity> modulesBestanden) { this.modulesBestanden = modulesBestanden;}
 }

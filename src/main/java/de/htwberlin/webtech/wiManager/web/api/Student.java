@@ -8,31 +8,21 @@ public class Student {
     private String vorname;
     private String name;
     private String email;
-
     private String password;
     private int matrikelNr;
 
-    private List<Long> modulesBelegt;
-
-    private List<Long> modulesBestanden;
-
-    private double notenDurchschnitt;
 
 
-    public Student(long id, String vorname, String name, int matrikelNr, String email, String password,
-                   double notenDurchschnitt, List<Long> moduleIdsBelegt, List<Long> moduleIdsBestanden) {
+    public Student(long id, String vorname, String name,String email, String password, int matrikelNr) {
         this.id = id;
         this.vorname = vorname;
         this.name = name;
         this.email = email;
-        this.matrikelNr = this.matrikelNr;
+        this.matrikelNr = matrikelNr;
         this.password = password;
-        this.notenDurchschnitt = notenDurchschnitt;
-        this.modulesBelegt = moduleIdsBelegt;
-        this.modulesBestanden = moduleIdsBestanden;
     }
 
-    public Student(long id, String vorname, String name, String email, String password, int matrikelNr, double notenDurchschnitt, int lpGesamt) {
+    public Student(long id, String vorname, String name, int email, String password, String matrikelNr, List<Long> notenDurchschnitt, List<Long> lpGesamt) {
     }
 
 
@@ -79,16 +69,4 @@ public class Student {
     public void setMatrikelNr(int matrikelNr) {
         this.matrikelNr = matrikelNr;
     }
-
-    public List<Long> getModulesBelegt() { return modulesBelegt; }
-
-    public void setModulesBelegt(List<Long> modulesBelegt) { this.modulesBelegt = modulesBelegt; }
-
-    public List<Long> getModulesBestanden() { return modulesBestanden; }
-
-    public void setModulesBestanden(List<Long> modulesBestanden) { this.modulesBestanden = modulesBestanden;}
-
-    public double getNotenDurchschnitt() { return notenDurchschnitt; }
-
-    public void setNotenDurchschnitt(double notenDurchschnitt) { this.notenDurchschnitt = notenDurchschnitt; }
 }
