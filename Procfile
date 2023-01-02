@@ -1,1 +1,1 @@
-web: gunicorn app:FaceDetector
+web: gunicorn <webtechwimanager>.wsgi
