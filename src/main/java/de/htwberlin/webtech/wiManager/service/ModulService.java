@@ -2,7 +2,6 @@ package de.htwberlin.webtech.wiManager.service;
 
 import de.htwberlin.webtech.wiManager.persistance.ModulEntity;
 import de.htwberlin.webtech.wiManager.persistance.ModulRepository;
-import de.htwberlin.webtech.wiManager.persistance.StudentRepository;
 import de.htwberlin.webtech.wiManager.web.api.Modul;
 import de.htwberlin.webtech.wiManager.web.api.ModulCreateOrUpdateRequest;
 import org.springframework.stereotype.Service;
@@ -14,12 +13,10 @@ import java.util.stream.Collectors;
 public class ModulService {
 
     private final ModulRepository modulRepository;
-    private final StudentRepository studentRepository;
 
-    public ModulService(ModulRepository modulRepository, StudentRepository studentRepository)
+    public ModulService(ModulRepository modulRepository)
     {
         this.modulRepository = modulRepository;
-        this.studentRepository = studentRepository;
     }
 
     public List<Modul> findAll(){

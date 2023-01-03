@@ -1,7 +1,5 @@
 package de.htwberlin.webtech.wiManager.web;
 import de.htwberlin.webtech.wiManager.service.StudentService;
-import de.htwberlin.webtech.wiManager.web.api.Modul;
-import de.htwberlin.webtech.wiManager.web.api.ModulCreateOrUpdateRequest;
 import de.htwberlin.webtech.wiManager.web.api.Student;
 
 

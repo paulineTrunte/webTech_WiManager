@@ -1,1 +1,1 @@
-web: gunicorn <webtechwimanager>.wsgi
+web: java -Dserver.port=$PORT $JAVA_OPTS -jar build/libs/webTech_WiManager-0.0.1-SNAPSHOT.jar
