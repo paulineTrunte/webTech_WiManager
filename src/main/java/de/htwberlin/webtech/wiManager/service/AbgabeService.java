@@ -6,6 +6,7 @@ import de.htwberlin.webtech.wiManager.web.api.AbgabeCreateOrUpdateRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -58,7 +59,7 @@ public class AbgabeService {
 
 
     public boolean deleteById(Long id) {
-        if(abgabeRepository.existsById(id)) {
+        if(!abgabeRepository.existsById(id)) {
             return false;
         }
         abgabeRepository.deleteById(id);
@@ -75,5 +76,9 @@ public class AbgabeService {
                 abgabeEntity.getFrist(),
                 abgabeEntity.getNotificationMessage()
         );
+    }
+
+    public Optional<AbgabeEntity> get(long l) {
+        return abgabeRepository.findById(l);
     }
 }

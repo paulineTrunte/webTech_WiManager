@@ -1,5 +1,6 @@
 package de.htwberlin.webtech.wiManager.web.api;
 
+import java.time.LocalDate;
 import java.util.Date;
 
 public class Abgabe {
@@ -10,12 +11,12 @@ public class Abgabe {
 
     private String modulName;
 
-    private Date frist;
+    private LocalDate frist;
 
     private String notificationMessage;
 
 
-    public Abgabe(long id, int semester, String modulName, Date frist, String notificationMessage){
+    public Abgabe(long id, int semester, String modulName, LocalDate frist, String notificationMessage){
         this.id = id;
         this.semester = semester;
         this.modulName = modulName;
@@ -23,7 +24,13 @@ public class Abgabe {
         this.notificationMessage = notificationMessage;
     }
 
-    public Abgabe(){}
+    public Abgabe(int semester, String modulName, LocalDate frist, String notificationMessage){
+        this.id = id;
+        this.semester = semester;
+        this.modulName = modulName;
+        this.frist = frist;
+        this.notificationMessage = notificationMessage;
+    }
 
     public long getId() { return id; }
 
@@ -37,12 +44,23 @@ public class Abgabe {
 
     public void setModulName(String modulName) { this.modulName = modulName; }
 
-    public Date getFrist() { return frist; }
+    public LocalDate getFrist() { return frist; }
 
-    public void setFrist(Date frist) { this.frist = frist; }
+    public void setFrist(LocalDate frist) { this.frist = frist; }
 
     public String getNotificationMessage() { return notificationMessage; }
 
     public void setNotificationMessage(String notificationMessage) { this.notificationMessage = notificationMessage;  }
+
+    @Override
+    public String toString() {
+        return "Abgabe{" +
+                "id=" + id +
+                ", semester=" + semester +
+                ", modulName='" + modulName + '\'' +
+                ", frist=" + frist +
+                ", notificationMessage='" + notificationMessage + '\'' +
+                '}';
+    }
 
 }

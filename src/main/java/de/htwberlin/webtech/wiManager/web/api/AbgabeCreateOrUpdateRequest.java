@@ -1,6 +1,6 @@
 package de.htwberlin.webtech.wiManager.web.api;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 public class AbgabeCreateOrUpdateRequest {
 
@@ -10,11 +10,11 @@ public class AbgabeCreateOrUpdateRequest {
 
     private String modulName;
 
-    private Date frist;
+    private LocalDate frist;
 
     private String notificationMessage;
 
-    public AbgabeCreateOrUpdateRequest(int semester, String modulName, Date frist, String notificationMessage){
+    public AbgabeCreateOrUpdateRequest(int semester, String modulName, LocalDate frist, String notificationMessage){
         this.semester = semester;
         this.modulName = modulName;
         this.frist = frist;
@@ -31,9 +31,9 @@ public class AbgabeCreateOrUpdateRequest {
 
     public void setModulName(String modulName) {this.modulName = modulName;}
 
-    public Date getFrist() {return frist;}
+    public LocalDate getFrist() {return frist;}
 
-    public void setFrist(Date frist) {this.frist = frist;}
+    public void setFrist(LocalDate frist) {this.frist = frist;}
 
     public String getNotificationMessage() {return notificationMessage;}
 

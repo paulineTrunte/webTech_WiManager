@@ -1,6 +1,7 @@
 package de.htwberlin.webtech.wiManager.persistance;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Entity (name = "abgabe")
@@ -18,13 +19,13 @@ public class AbgabeEntity {
     private String modulName;
 
     @Column(name = "frist", nullable = true)
-    private Date frist;
+    private LocalDate frist;
 
     @Column(name = "notificationMessage", nullable = true)
     private String notificationMessage;
 
 
-    public AbgabeEntity(int semester, String modulName, Date frist, String notificationMessage){
+    public AbgabeEntity(int semester, String modulName, LocalDate frist, String notificationMessage){
         this.semester = semester;
         this.modulName = modulName;
         this.frist = frist;
@@ -46,9 +47,9 @@ public class AbgabeEntity {
 
     public void setModulName(String modulName) {this.modulName = modulName;}
 
-    public Date getFrist() {return frist;}
+    public LocalDate getFrist() {return frist;}
 
-    public void setFrist(Date frist) {this.frist = frist;}
+    public void setFrist(LocalDate frist) {this.frist = frist;}
 
     public String getNotificationMessage() {return notificationMessage;}
 

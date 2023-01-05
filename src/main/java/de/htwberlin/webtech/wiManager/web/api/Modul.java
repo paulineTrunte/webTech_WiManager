@@ -30,8 +30,16 @@ public class Modul {
         this.bestanden = bestanden;
     }
 
-    public Modul() {
 
+    public Modul(int semester, String modulName, String art, String form, String sws, int lp, boolean belegt, boolean bestanden) {
+        this.modulName = modulName;
+        this.semester = semester;
+        this.art = art;
+        this.form = form;
+        this.sws = sws;
+        this.lp = lp;
+        this.belegt = belegt;
+        this.bestanden = bestanden;
     }
 
 
@@ -99,4 +107,18 @@ public class Modul {
 
     public void setBestanden(boolean bestanden) { this.bestanden = bestanden; }
 
+    @Override
+    public String toString() {
+        return "Modul{" +
+                "id=" + id +
+                ", modulName='" + modulName + '\'' +
+                ", semester=" + semester +
+                ", art='" + art + '\'' +
+                ", form='" + form + '\'' +
+                ", sws='" + sws + '\'' +
+                ", lp=" + lp +
+                ", belegt=" + belegt +
+                ", bestanden=" + bestanden +
+                '}';
+    }
 }
