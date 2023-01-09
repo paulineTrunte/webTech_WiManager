@@ -31,8 +31,8 @@ public class ModulRestControllerTest {
     private ModulService modulService;
 
     @Test
-    @DisplayName("should return found modul from modulService")
-    void should_return_found_abgaben_from_abgabeService() throws Exception {
+    @DisplayName("returns found modules from modulService")
+    void foundModules() throws Exception {
         // given
         var modules = List.of(
                 new Modul(123, "Konfliktmanagement", 4, "WP", "PÜ", "2", 5, false, false),
@@ -67,8 +67,8 @@ public class ModulRestControllerTest {
     }
 
     @Test
-    @DisplayName("should return 404 if modul is not found")
-    void should_return_404_if_modul_is_not_found() throws Exception {
+    @DisplayName("returns 404 if module is not found")
+    void moduleNotFound() throws Exception {
         // given
         doReturn(null).when(modulService).findById(anyLong());
 
@@ -78,32 +78,10 @@ public class ModulRestControllerTest {
                 .andExpect(status().isNotFound());
     }
 
-    /*
-    @Test
-    @DisplayName("should return 201 http status and Location header when creating modul")
-    void should_return_201_http_status_and_location_header_when_creating_modul() throws Exception {
-        // given
-        String abgabeToCreateAsJson = "{\"semester\": \"4\", \"modulname\":\"Konfliktmanagement\", \"art\":\"WP\", \"form\":\" PÜ\", \"sws\":\"2\", \"lp\":\"5\", \"belegt\":\"false\", \"bestanden\":\"false}";
-        var modul = new Modul(123, "Konfliktmanagement", 4, "WP", "PÜ", "2", 5, false, false);
-        doReturn(modul).when(modulService).create(any());
-
-        // when
-        mockMvc.perform(
-                        post("/api/v1/modules")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(abgabeToCreateAsJson)
-                )
-                // then
-                .andExpect(status().isCreated())
-                .andExpect(header().exists("Location"))
-                .andExpect(header().string("Location", Matchers.equalTo(("/api/v1/modules/" + modul.getId()))));
-
-    }
-     */
 
     @Test
-    @DisplayName("should validate create modul request")
-    void should_validate_create_modul_request() throws Exception {
+    @DisplayName("validates create modul request")
+    void validatesModulRequest() throws Exception {
         // given
         String personToCreateAsJson = "{\"semester\": \"4\", \"modulname\":\"Konfliktmanagement\", \"frist\":\"2022-12-15\", \"notificationMessage\": Hausarbeit}";;
 

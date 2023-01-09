@@ -12,10 +12,10 @@ public class AbgabeEntity {
     @Column(name = "id", nullable = false, unique = true)
     private Long id;
 
-    @Column(name = "semester", nullable = false)
+    @Column(name = "semester", nullable = true)
     private int semester;
 
-    @Column(name = "modulName", nullable = false)
+    @Column(name = "modulName", nullable = true)
     private String modulName;
 
     @Column(name = "frist", nullable = true)

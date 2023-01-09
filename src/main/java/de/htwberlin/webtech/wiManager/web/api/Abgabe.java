@@ -25,7 +25,6 @@ public class Abgabe {
     }
 
     public Abgabe(int semester, String modulName, LocalDate frist, String notificationMessage){
-        this.id = id;
         this.semester = semester;
         this.modulName = modulName;
         this.frist = frist;

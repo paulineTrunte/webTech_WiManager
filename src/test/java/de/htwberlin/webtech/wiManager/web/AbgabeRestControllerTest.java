@@ -29,8 +29,8 @@ public class AbgabeRestControllerTest implements WithAssertions {
 
 
     @Test
-    @DisplayName("should return 404 if abgabe is not found")
-    void should_return_404_if_abagbe_is_not_found() throws Exception {
+    @DisplayName("returns 404 if abgabe is not found")
+    void abgabeNotFound() throws Exception {
         // given
         doReturn(null).when(abgabeService).findById(anyLong());
 
@@ -42,8 +42,8 @@ public class AbgabeRestControllerTest implements WithAssertions {
 
 
     @Test
-    @DisplayName("should validate create abgabe request")
-    void should_validate_create_person_request() throws Exception {
+    @DisplayName("validates create abgabe request")
+    void validatesAbgabeRequest() throws Exception {
         // given
         String personToCreateAsJson = "{\"semester\": \"4\", \"modulname\":\"Konfliktmanagement\", \"frist\":\"2022-12-15\", \"notificationMessage\": Hausarbeit}";;
 
@@ -59,8 +59,8 @@ public class AbgabeRestControllerTest implements WithAssertions {
 
     /*
     @Test
-    @DisplayName("should return found abgaben from abgabeService")
-    void should_return_found_abgaben_from_abgabeService() throws Exception {
+    @DisplayName("returns found abgaben from abgabeService")
+    void foundAbgaben() throws Exception {
         // given
         var abgaben = List.of(
                 new Abgabe(4, "Konfliktmanagement", LocalDate.of(2022, 12, 15), "Hausarbeit"),
@@ -76,35 +76,14 @@ public class AbgabeRestControllerTest implements WithAssertions {
                 .andExpect(jsonPath("$[0].id").value(0))
                 .andExpect(jsonPath("$[0].semester").value(4))
                 .andExpect(jsonPath("$[0].modulName").value("Konfliktmanagement"))
-                .andExpect(jsonPath("$[0].frist").value(abgaben.get(0).getFrist()))
+                .andExpect(jsonPath("$[0].frist").value(List.of(22,12,15)))
                 .andExpect(jsonPath("$[0].notificationMessage").value( "Hausarbeit"))
-                .andExpect(jsonPath("$[1].id").value(2))
+                .andExpect(jsonPath("$[1].id").value(1))
                 .andExpect(jsonPath("$[1].semester").value(3))
                 .andExpect(jsonPath("$[1].modulName").value("WebTech"))
-                .andExpect(jsonPath("$[1].frist").value(abgaben.get(1).getFrist()))
+                .andExpect(jsonPath("$[1].frist").value(abgaben.get(1).getFrist().toString()))
                 .andExpect(jsonPath("$[1].notificationMessage").value( "Milestone 4"));
     }
 
-    @Test
-    @DisplayName("should return 201 http status and Location header when creating abgabe")
-    void should_return_201_http_status_and_location_header_when_creating_a_person() throws Exception {
-        // given
-        String abgabeToCreateAsJson = "{\"semester\": \"4\", \"modulname\":\"Konfliktmanagement\", \"frist\":\"2022-12-15\", \"notificationMessage\": Hausarbeit}";
-        var abgabe = new Abgabe(4, "Konfliktmanagement", LocalDate.of(2022, 12, 15), "Hausarbeit");
-        doReturn(abgabe).when(abgabeService).create(any());
-
-        // when
-        mockMvc.perform(
-                        post("/api/v1/abgaben")
-                                .contentType(MediaType.APPLICATION_JSON)
-                                .content(abgabeToCreateAsJson)
-                )
-                // then
-                .andExpect(status().isCreated())
-                .andExpect(header().exists("Location"))
-                .andExpect(header().string("Location", Matchers.equalTo(("/api/v1/abgaben/" + abgabe.getId()))));
-
-
-    }
      */
 }
