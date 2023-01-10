@@ -5,7 +5,7 @@
 Ursprüngliche Idee: "Eine Management-Applikation für das Wirtschaftsinformatik-Studium an der HTW-Berlin. Es können vom User Module angelegt und ausgewählt werden, die Er/Sie in dem jeweiligen Semester belegt. In einer Datenbank sind alle Module des Studiengangs hinterlegt. Der User muss diese nur auswählen und kann Sie nach Beendigung als abgeschlossen markieren."
 
 ## Project Description - How to use Wimanager
-...
+
 Tatsächliche Umsetzung:
 
 Diese Webanwendung ist ein studentisches Projekt innerhalb des Moduls "WebTechnologien" des Bachelor-Studiengangs Wirtschaftsinformatik von Stevan Paunovic und Pauline Trunte.
@@ -18,4 +18,4 @@ Zusätzlich verfügt die Anwendung über einen DarkMode, der über einen Button 
 Es gibt zudem noch einen Refresh-Button, der genutzt werden kann, um die Seite zu aktualisieren, damit man möglichst immer auf dem aktuellsten Stand ist beim Nutzen des Wirtschaftsinformatik-Managers.
 
 Wir wünschen viel Freude bei der Nutzung ◕‿◕ Es grüßen euch Stevan und Pauline
-...
+
